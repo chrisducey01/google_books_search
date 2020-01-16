@@ -13,7 +13,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:dev": "concurrently \"nodemon server/server.js --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && react-scripts start",
+    "client": "cd client && npm run start",
     "server": "nodemon server/server.js --ignore 'client/*'",
     "build": "cd client && npm run build",
     "test": "react-scripts test",

@@ -1,5 +1,6 @@
 const db = require("../models");
 const router = require("express").Router();
+const API = require("../utils/googleBooksAPI");
 
 //*********************************************
 // Routes for /api/books (set in index.js)
@@ -42,5 +43,15 @@ router.route("/:id").delete((req, res) => {
 })
 
 
+// makes a call to google books api to search for book
+// doing the call server side so API key can be hidden
+// and makes app more flexible to be called not just from a browser
+router.route("/search").post((req,res)=>{
+    console.log("Search Route Hit")
+    const {bookName} = req.query;
+    API.search(bookName).then(searchRes=>{
+        res.send(searchRes.data);
+    })
+});
 
 module.exports = router;
