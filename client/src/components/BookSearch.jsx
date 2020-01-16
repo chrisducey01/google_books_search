@@ -7,6 +7,8 @@ function BookSearch(props) {
     const [bookName, setBookName] = useState("");
 
     function handleInputChange(event) {
+        event.preventDefault();
+        console.log(event.target);
         setBookName(event.target.value);
     }
 
@@ -27,15 +29,18 @@ function BookSearch(props) {
             </Row>
             <Row className="mt-3">
                 <Col>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Row>
                             <Col>
                                 <Form.Control required type="text" placeholder="Book Name"
                                     name="bookName" value={bookName} onChange={handleInputChange}
                                 />
                             </Col>
-                            <Col md={2}>
-                                <Button variant="outline-success" onClick={handleSubmit}>Search</Button>
+                        </Row>
+                        <Row className="d-flex justify-content-end">
+                        <Col md={2} className="d-flex mt-3 justify-content-end" >
+                                <Button variant="outline-success" onClick={handleSubmit}
+                                className="w-75">Search</Button>
                             </Col>
                         </Row>
                     </Form>
