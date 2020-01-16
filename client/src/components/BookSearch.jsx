@@ -15,7 +15,7 @@ function BookSearch(props) {
         axios.post(`/api/books/search?bookName=${bookName}`).then(res=>{
             const books = res.data;
             console.log(books);
-            //props.getBookInfo(books);
+            props.getBooks(books);
         })
 
     }
