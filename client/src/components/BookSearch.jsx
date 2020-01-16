@@ -8,7 +8,6 @@ function BookSearch(props) {
 
     function handleInputChange(event) {
         event.preventDefault();
-        console.log(event.target);
         setBookName(event.target.value);
     }
 
@@ -16,7 +15,6 @@ function BookSearch(props) {
         event.preventDefault();
         axios.post(`/api/books/search?bookName=${bookName}`).then(res=>{
             const books = res.data;
-            console.log(books);
             props.getBooks(books);
         })
 
