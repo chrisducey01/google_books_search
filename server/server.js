@@ -31,6 +31,10 @@ if (process.env.NODE_ENV === "production") {
 	console.log("Prod Mode Enabled")
 	app.use(express.static("client/build"));
 }
+else{
+    console.log("Non-prod mode.  Serving up static files.")
+    app.use(express.static("client/public"));
+}
 
 // ====== Routing & Controllers ====== //
 app.use(routes);

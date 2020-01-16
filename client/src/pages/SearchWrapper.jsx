@@ -13,8 +13,9 @@ class SearchWrapper extends Component {
         this.getBooks = this.getBooks.bind(this);
     }
 
-    getBooks(books){
-        this.setState({books:books.items});
+    getBooks(books) {
+        if (books.items)
+            this.setState({ books: books.items });
     }
 
     render() {
@@ -24,11 +25,11 @@ class SearchWrapper extends Component {
                     <Col><Header /></Col>
                 </Row>
                 <Row className="my-3">
-                    <Col><BookSearch getBooks={this.getBooks}/></Col>
+                    <Col><BookSearch getBooks={this.getBooks} /></Col>
                 </Row>
                 <Row>
                     <div>
-                        {this.state.books.map(book=>{
+                        {this.state.books.map(book => {
                             return <BookItem className="my-4" key={book.id} book={book} />
                         })}
                     </div>
